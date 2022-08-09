@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SimpleAuthentication</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/sign-in/">
+  <link href="/docs/5.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  </head>
+
+  <body>
+  <div class="container mt-3">
+  <p class="notice"> <%= notice %></p>
+  <p class="alert"> <%= alert %></p>
+  <% if current_user %>
+      <%= link_to "Log Out", destroy_user_session_path , data: { turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+    <% else %>
+      <%= link_to 'Log In', new_user_session_path %>
+    <% end %>
+    <%= yield %>
+    </div>
+  </body>
+</html>
